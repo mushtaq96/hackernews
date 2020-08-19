@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { render } from '@testing-library/react'
-
 //import the Apollo dependencies
 import { Mutation } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -45,9 +44,11 @@ render(){
                 />
             </div>
             <Mutation 
-            mutation={POST_MUTATION} 
-            variables={{ description,url }}>
-            { postMutation => <button onClick={postMutation}>Submit</button> }
+                mutation={POST_MUTATION} 
+                variables={{ description, url }}
+                onCompleted={()=>this.props.history.push('/')}
+            >
+                { postMutation => <button onClick={postMutation}>Submit</button> }
             </Mutation>
             
 
